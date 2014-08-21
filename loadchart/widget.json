@@ -1,6 +1,6 @@
 {
-  "name": "Average load chart",
-  "description": "Displays the 5m average load over time as a bar graph.",
+  "name": "LoadChart",
+  "description": "Displays the 5m average load over time as a graph.",
   "author": "Brett Terpstra",
   "email": "me+ubersicht@brettterpstra.com"
 }
