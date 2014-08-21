@@ -1,3 +1,10 @@
+colors =
+  low: "rgb(60, 160, 189)"
+  normal: "rgb(88, 189, 60)"
+  high: "rgb(243, 255, 134)"
+  higher: "rgb(255, 168, 80)"
+  highest: "rgb(255, 71, 71)"
+
 command: "sysctl -n vm.loadavg|awk '{print $2}'"
 refreshFrequency: 5000
 render: (output) -> """
@@ -12,7 +19,7 @@ update: (output, domEl) ->
     color: true
     brighter: false
     inverse: false
-    bars: 50
+    bars: 100
     animated: false
 
   max_rows = settings.bars
@@ -67,6 +74,7 @@ update: (output, domEl) ->
   min = sorted[0]
   div = (max - min) / (1000 / max_rows)
 
+  # TODO: A setting to use a set scale from 0 and just remove the first bar and add the last one
   # Iterate the values array and assign height and color classes to bars
   i = 0
   while i < max_rows
@@ -90,54 +98,54 @@ update: (output, domEl) ->
     i++
 
 style: """
-  left: 600px
-  top: 90px
-  width: 315px
-  height: 90px
-  border-radius: 5px
-  position: relative
+  left 600px
+  top 90px
+  width 315px
+  height 90px
+  border-radius 5px
+  position relative
 
   &.bg
-    background: rgba(0,0,0,.25)
+    background rgba(0,0,0,.25)
 
   &.inverse
     &.bg
-      background: rgba(255,255,255,.25)
+      background rgba(255,255,255,.25)
     .bar
-      border-left: 3px solid rgb(0,0,0)
+      border-left 3px solid rgb(0,0,0)
 
   #chartcontainer
-    position: absolute
-    bottom: 0
-    width: 100%
-    height: 100%
-    left: 10px
+    position absolute
+    bottom 0
+    width 100%
+    height 100%
+    left 10px
 
 
   .bar
-    color: rgba(255,255,255,.65)
-    font-size: 10px
-    text-align: center
-    display: block
-    font-family: Menlo
-    border-left: 3px solid rgb(255,255,255)
-    width: 5px
-    bottom: 0
-    padding: 0
-    line-height: 1
-    position: absolute
+    color rgba(255,255,255,.65)
+    font-size 10px
+    text-align center
+    display block
+    font-family Menlo
+    border-left 3px solid rgb(255,255,255)
+    width 5px
+    bottom 0
+    padding 0
+    line-height 1
+    position absolute
 
   &.animated .bar
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    -webkit-transform: translate3d(0, 0, 0);
-    transition: all 4s linear
+    -webkit-backface-visibility hidden;
+    -webkit-perspective 1000;
+    -webkit-transform translate3d(0, 0, 0);
+    transition all 4s linear
 
-  color-low = rgb(60, 160, 189)
-  color-normal = rgb(88, 189, 60)
-  color-high = rgb(243, 255, 134)
-  color-important = rgb(255, 168, 80)
-  color-urgent = rgb(255, 71, 71)
+  color-low = #{colors.low}
+  color-normal = #{colors.normal}
+  color-high = #{colors.high}
+  color-important = #{colors.higher}
+  color-urgent = #{colors.highest}
 
   &.color
     .low
