@@ -1,0 +1,6 @@
+{
+  "name": "Average load bar",
+  "description": "Displays the 5m average load as a colored bar on the left side of the screen.",
+  "author": "Brett Terpstra",
+  "email": "me+ubersicht@brettterpstra.com"
+}
