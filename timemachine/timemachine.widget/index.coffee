@@ -138,6 +138,8 @@ style: """
       &.finishing
         border-color rgba(96, 255, 137, .5)
         box-shadow 0 0 15px rgba(96, 255, 137, .35)
+      &.spinning
+        color: rgba(255,255,255,0)
     &.starting
       animation-timing-function ease-in-out
       animation starting 2s infinite
