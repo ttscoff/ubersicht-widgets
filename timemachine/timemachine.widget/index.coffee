@@ -110,6 +110,7 @@ style: """
     font-size 100px
     font-weight 700
     margin 0
+    // TODO: Centering on the circle outlines (borders) [github.com/ttscoff/ubersicht-widgets/issues/1]
     padding .026em 0 0 .033em
     font-family arcfontregular
     color rgba(255,255,255, .1)
