@@ -73,7 +73,7 @@ update: (output, domEl) ->
     $bar = $($chart.find('.bar').get(i))
 
     $bar.css
-      paddingTop: value + '%'
+      paddingTop: value + 2 + '%'
       left: (i * 7.5) + 'px'
     i++
 
@@ -84,12 +84,12 @@ width 180px
 height 45px
 border-radius 5px
 position relative
-font-family: Avenir
+font-family: Avenir, Helvetica
 border solid 1px rgba(#fff,.3)
 padding 5px
 
 h1, h2
-  font-size 27px
+  font-size 24px
 h1
   color rgba(#fff,.5)
   line-height 1
