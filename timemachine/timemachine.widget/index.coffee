@@ -110,12 +110,12 @@ style: """
     font-size 100px
     font-weight 700
     margin 0
-    padding 0
+    padding .026em 0 0 .033em
     font-family arcfontregular
     color rgba(255,255,255, .1)
     animation-direction alternate
     border solid 1px rgba(255,255,255, 0)
-    border-radius 100px
+    border-radius 100%
     &.spinning
       animation-direction reverse
       animation-timing-function linear !important
@@ -138,8 +138,6 @@ style: """
       &.finishing
         border-color rgba(96, 255, 137, .5)
         box-shadow 0 0 15px rgba(96, 255, 137, .35)
-      &.spinning
-        color: rgba(255,255,255,0)
     &.starting
       animation-timing-function ease-in-out
       animation starting 2s infinite
