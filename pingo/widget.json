@@ -1,0 +1,6 @@
+{
+  "name": "Pingo",
+  "description": "Displays 10-ping average, packet loss, and chart of results over time.",
+  "author": "Brett Terpstra",
+  "email": "me+ubersicht@brettterpstra.com"
+}
