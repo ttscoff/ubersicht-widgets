@@ -1,3 +1,6 @@
+settings:
+  animation: true
+
 command: "sysctl -n vm.loadavg|awk '{print $2}'"
 refreshFrequency: 10000
 render: (output) -> """
@@ -27,17 +30,21 @@ render: (output) -> """
 update: (output, domEl) ->
 
   storageKey = 'com.brettterpstra.storedLoadVal'
+
   val = parseFloat(output)
   $stat = $(domEl).find('h1')
+
   $stat.removeClass('highest higher high normal low')
   $stat.html(output.replace(/\./,'<i>.</i>'))
-  colorclass = switch
-    when val > 6 then 'highest'
-    when val > 4 then 'higher'
-    when val > 2 then 'high'
-    when val > 1 then 'normal'
-    else 'low'
-  $stat.find('i').addClass colorclass
+
+  if this.settings.animation
+    colorclass = switch
+      when val > 6 then 'highest'
+      when val > 4 then 'higher'
+      when val > 2 then 'high'
+      when val > 1 then 'normal'
+      else 'low'
+    $stat.find('i').addClass colorclass
 
   prevVal = parseFloat(localStorage.getItem(storageKey))
   if prevVal > val
