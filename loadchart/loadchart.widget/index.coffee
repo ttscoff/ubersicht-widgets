@@ -1,4 +1,14 @@
-colors =
+# Note that animation is cpu-intensive, especially
+# with a large number of bars
+settings:
+  background: true
+  color: true
+  brighter: false
+  inverse: false
+  bars: 100
+  animated: false
+
+colors:
   low: "rgb(60, 160, 189)"
   normal: "rgb(88, 189, 60)"
   high: "rgb(243, 255, 134)"
@@ -6,38 +16,29 @@ colors =
   highest: "rgb(255, 71, 71)"
 
 command: "sysctl -n vm.loadavg|awk '{print $2}'"
-refreshFrequency: 5000
+refreshFrequency: 10000
 render: (output) -> """
   <div id="chartcontainer"></div>
 """
 
 update: (output, domEl) ->
-  # Note that animation is cpu-intensive, especially
-  # with a large number of bars
-  settings =
-    background: true
-    color: true
-    brighter: false
-    inverse: false
-    bars: 100
-    animated: false
 
-  max_rows = settings.bars
+  max_rows = @settings.bars
   $el = $(domEl)
   $chart = $el.find('#chartcontainer')
 
   $el.css
-    width: settings.bars * 6.3 + 'px'
+    width: @settings.bars * 6.3 + 'px'
   # Adjust classes based on settings
-  if settings.background
+  if @settings.background
     $el.addClass('bg')
-  if settings.animated
+  if @settings.animated
     $el.addClass('animated')
-  if settings.color
+  if @settings.color
     $el.addClass('color')
-  if settings.brighter
+  if @settings.brighter
     $el.addClass('brighter')
-  if settings.inverse
+  if @settings.inverse
     $el.addClass('inverse')
 
   # If the chart container is empty, set up bars
@@ -99,7 +100,7 @@ update: (output, domEl) ->
 
 style: """
   left 600px
-  top 90px
+  top 30px
   width 315px
   height 90px
   border-radius 5px
@@ -141,11 +142,11 @@ style: """
     -webkit-transform translate3d(0, 0, 0);
     transition all 4s linear
 
-  color-low = #{colors.low}
-  color-normal = #{colors.normal}
-  color-high = #{colors.high}
-  color-important = #{colors.higher}
-  color-urgent = #{colors.highest}
+  color-low = #{@colors.low}
+  color-normal = #{@colors.normal}
+  color-high = #{@colors.high}
+  color-important = #{@colors.higher}
+  color-urgent = #{@colors.highest}
 
   &.color
     .low
