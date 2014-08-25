@@ -100,7 +100,7 @@ update: (output, domEl) ->
 
 style: """
   left 600px
-  top 90px
+  top 30px
   width 315px
   height 90px
   border-radius 5px
