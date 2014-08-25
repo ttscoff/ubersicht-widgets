@@ -37,7 +37,7 @@ update: (output, domEl) ->
   $stat.removeClass('highest higher high normal low')
   $stat.html(output.replace(/\./,'<i>.</i>'))
 
-  if this.settings.animation
+  if @settings.animation
     colorclass = switch
       when val > 6 then 'highest'
       when val > 4 then 'higher'

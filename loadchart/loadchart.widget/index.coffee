@@ -1,14 +1,4 @@
-# Note that animation is cpu-intensive, especially
-# with a large number of bars
-settings:
-  background: true
-  color: true
-  brighter: false
-  inverse: false
-  bars: 100
-  animated: false
-
-colors:
+colors =
   low: "rgb(60, 160, 189)"
   normal: "rgb(88, 189, 60)"
   high: "rgb(243, 255, 134)"
@@ -22,23 +12,32 @@ render: (output) -> """
 """
 
 update: (output, domEl) ->
+  # Note that animation is cpu-intensive, especially
+  # with a large number of bars
+  settings =
+    background: true
+    color: true
+    brighter: false
+    inverse: false
+    bars: 100
+    animated: false
 
-  max_rows = @settings.bars
+  max_rows = settings.bars
   $el = $(domEl)
   $chart = $el.find('#chartcontainer')
 
   $el.css
-    width: @settings.bars * 6.3 + 'px'
+    width: settings.bars * 6.3 + 'px'
   # Adjust classes based on settings
-  if @settings.background
+  if settings.background
     $el.addClass('bg')
-  if @settings.animated
+  if settings.animated
     $el.addClass('animated')
-  if @settings.color
+  if settings.color
     $el.addClass('color')
-  if @settings.brighter
+  if settings.brighter
     $el.addClass('brighter')
-  if @settings.inverse
+  if settings.inverse
     $el.addClass('inverse')
 
   # If the chart container is empty, set up bars
@@ -142,11 +141,11 @@ style: """
     -webkit-transform translate3d(0, 0, 0);
     transition all 4s linear
 
-  color-low = #{@colors.low}
-  color-normal = #{@colors.normal}
-  color-high = #{@colors.high}
-  color-important = #{@colors.higher}
-  color-urgent = #{@colors.highest}
+  color-low = #{colors.low}
+  color-normal = #{colors.normal}
+  color-high = #{colors.high}
+  color-important = #{colors.higher}
+  color-urgent = #{colors.highest}
 
   &.color
     .low
