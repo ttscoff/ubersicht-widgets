@@ -1,7 +1,7 @@
 # Pingo by Brett Terpstra <http://brettterpstra.com>
 # Change the server as needed
 # Defaults to a 10-ping average run every 5 minutes
-command: "ping -c 10 google.com | tail -n 2"
+command: "ping -c 10 199.19.85.141 | tail -n 2"
 refreshFrequency: 300000
 render: (output) -> """
 <div id="pingo">
@@ -45,17 +45,19 @@ update: (output, domEl) ->
   if totals == null
     totals = []
 
+  # Turn array strings into floating point values
+  totals = totals.map (v, a, i) ->
+    parseFloat(v)
+
   # Add the current load result to the load values array
   totals.push parseFloat ping_avg
+
+  # Trim the array to match the number of bars we want
+  totals = totals.slice(-max_rows)
 
   # Store the ammended array
   localStorage.setItem(storageKey, JSON.stringify(totals))
 
-  # Trim the array to match the number of bars we want
-  totals = totals.slice(-max_rows)
-  # Turn array strings into floating point values
-  totals = totals.map (v, a, i) ->
-    parseFloat(v)
 
   # Create a new array and sort it to determine min/max values
   sorted = totals.slice(0)
@@ -83,7 +85,6 @@ top 680px
 width 180px
 height 45px
 border-radius 5px
-position relative
 font-family: Avenir, Helvetica
 border solid 1px rgba(#fff,.3)
 padding 5px
@@ -109,9 +110,12 @@ h2
 #chart
   position absolute
   bottom 0
-  left 6px
-  width 100%
+  left 0
+  padding 6px 0 0 6px
   height 20px
+  width 100%
+  border-top solid 1px rgba(#fff,.5)
+  box-sizing border-box
 
 .bar
   color rgba(#fff,.65)

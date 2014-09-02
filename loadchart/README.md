@@ -4,7 +4,7 @@ A widget for [Übersicht](http://tracesof.net/uebersicht/) that displays a graph
 
 There are settings in the `index.coffee` file for showing it in color or black and white, inverse, with and without background, and bright or translucent.
 
-![](screenshot.png)
+![](screenshot2.png)
 
 ### Adjusting settings
 

@@ -5,6 +5,8 @@ colors =
   higher: "rgb(255, 168, 80)"
   highest: "rgb(255, 71, 71)"
 
+
+
 command: "sysctl -n vm.loadavg|awk '{print $2}'"
 refreshFrequency: 10000
 render: (output) -> """
@@ -57,11 +59,13 @@ update: (output, domEl) ->
   # Add the current load result to the load values array
   totals.push(output.replace(/\n/g,''))
 
+  # Trim the array to match the number of bars we want
+  totals = totals.slice(-max_rows)
+
   # Store the ammended array
   localStorage.setItem(storageKey, JSON.stringify(totals))
 
-  # Trim the array to match the number of bars we want
-  totals = totals.slice(-max_rows)
+
   # Turn array strings into floating point values
   totals = totals.map (v, a, i) ->
     parseFloat(v)
@@ -99,11 +103,10 @@ update: (output, domEl) ->
 
 style: """
   left 600px
-  top 30px
+  top 85px
   width 315px
   height 90px
   border-radius 5px
-  position relative
 
   &.bg
     background rgba(0,0,0,.25)
