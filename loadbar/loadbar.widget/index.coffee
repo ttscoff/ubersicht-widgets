@@ -7,7 +7,7 @@ render: (_) -> """
 update: (output, domEl) ->
   val = parseFloat(output,10)
   $bar = $(domEl).find('.bar')
-  $bar.removeClass ''
+  $bar.removeClass 'urgent important high normal low'
   $bar.css width: $(domEl).height()
   $bar.attr 'value': val
   colorclass = switch
