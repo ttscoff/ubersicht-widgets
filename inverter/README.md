@@ -4,7 +4,7 @@ A widget for [Übersicht](http://tracesof.net/uebersicht/) that can be used to a
 
 ![](screenshot.png)
 
-Here's a [YouTube video of Inverter in action](https://www.youtube.com/watch?v=8f67u6ZIFTk&feature=youtu.be), in case you're trying to figure out if you'd actually care about this or not.
+Here's a [YouTube video of Inverter in action](https://www.youtube.com/watch?v=EcD_3wirU6A&feature=youtu.be), in case you're trying to figure out if you'd actually care about this or not.
 
 ### How to use it
 
