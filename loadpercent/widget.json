@@ -1,0 +1,6 @@
+{
+  "name": "LoadPercent",
+  "description": "Displays the 5m average load as a percentage with color coding.",
+  "author": "Brett Terpstra",
+  "email": "me+ubersicht@brettterpstra.com"
+}
